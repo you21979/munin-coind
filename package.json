@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "munin-plugin": "",
+    "async": "",
+    "bitcoin": ""
+  }
+}

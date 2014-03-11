@@ -1,0 +1,9 @@
+{
+ "user":"",
+ "pass":"",
+ "host":"127.0.0.1",
+ "port":3335,
+ "coininit":0,
+ "coinsperblock":50,
+ "maxamount":105100000
+}
