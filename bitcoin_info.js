@@ -42,7 +42,7 @@ var pipeline = function(client, config, callback){
        callback(err, info);
     });
 }
-var bitcoin_into = module.exports = function(config, callback){
+var bitcoin_info = module.exports = function(config, callback){
     var cl = new bitcoin.Client(config);
     pipeline(cl, config, callback);
 }
