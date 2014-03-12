@@ -16,6 +16,7 @@ var get_info = module.exports = function(filename, list, info){
     });
     list.push(function(){
         var g = new munin.Graph(name + ' blocks', 'blocks', name);
+        g.setScale(true);
         g.add(new munin.Model.Default('blocks').setValue(info.blocks));
         g.sortValue();
         return g;
@@ -28,8 +29,8 @@ var get_info = module.exports = function(filename, list, info){
     });
     list.push(function(){
         var g = new munin.Graph(name + ' transactions', 'transactions', name);
-        g.add(new munin.Model.Default('confirmed').setValue(info.confirmed));
-        g.add(new munin.Model.Default('waiting').setValue(info.waiting));
+        g.add(new munin.Model.Default('confirmed').setValue(info.confirmed).setDraw('STACK'));
+        g.add(new munin.Model.Default('waiting').setValue(info.waiting).setDraw('STACK'));
         g.sortValue();
         return g;
     });
@@ -41,19 +42,21 @@ var get_info = module.exports = function(filename, list, info){
     });
     list.push(function(){
         var g = new munin.Graph(name + ' networkhash', 'hash/s', name);
+        g.setScale(true);
         g.add(new munin.Model.Default('networkhash').setValue(info.networkhash));
         g.sortValue();
         return g;
     });
     list.push(function(){
-        var g = new munin.Graph(name + ' coinbase', 'MONA', name);
+        var g = new munin.Graph(name + ' coinbase', 'amount', name);
         g.add(new munin.Model.Default('coinbase').setValue(info.coinbase));
+        g.setScale(true);
         g.sortValue();
         return g;
     });
     list.push(function(){
         var g = new munin.Graph(name + ' coinper', 'percent', name);
-        g.add(new munin.Model.Default('coinper').setValue(info.coinper));
+        g.add(new munin.Model.Rate('coinper').setValue(info.coinper));
         g.sortValue();
         return g;
     });
